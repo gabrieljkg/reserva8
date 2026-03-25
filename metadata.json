@@ -1,0 +1,7 @@
+{
+  "name": "Unplugged Bliss",
+  "description": "Premium marketplace for radical disconnection tourism, focusing on digital detox and zero-signal destinations.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
