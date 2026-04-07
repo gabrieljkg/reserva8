@@ -65,8 +65,7 @@ export const Home = () => {
         query = supabase.from('imoveis').select('*');
         
         if (cidadeFilter) {
-          // Assuming imoveis table might not have location, but we can search by bairro or titulo
-          query = query.ilike('bairro', `%${cidadeFilter}%`);
+          query = query.ilike('cidade', `%${cidadeFilter}%`);
         }
         if (bairroFilter) {
           query = query.ilike('bairro', `%${bairroFilter}%`);
