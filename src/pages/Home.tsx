@@ -7,7 +7,7 @@ import { Destination } from '../data/mockData';
 import { motion } from 'motion/react';
 import { Footer } from '../components/Footer';
 import { supabase } from '../lib/supabase';
-import { useAdmin, ADMIN_EMAIL } from '../hooks/useAdmin';
+import { useAdmin, ADMIN_EMAILS } from '../hooks/useAdmin';
 
 export const Home = () => {
   const [destinations, setDestinations] = useState<Destination[]>([]);
@@ -146,7 +146,7 @@ export const Home = () => {
     const { data: { session } } = await supabase.auth.getSession();
     const userEmail = session?.user?.email?.toLowerCase();
     
-    if (userEmail !== ADMIN_EMAIL.toLowerCase()) {
+    if (!userEmail || !ADMIN_EMAILS.includes(userEmail)) {
       console.error('Tentativa de exclusão negada: Usuário não é administrador', userEmail);
       alert('Acesso negado. Apenas o administrador pode excluir anúncios.');
       return;
